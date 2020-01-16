@@ -1,14 +1,16 @@
 <?php 
 	if(isset($_POST['submit'])){
+		$email = $title = $ingredients = '';
 		
 		// check email
 		if(empty($_POST['email'])){
 			echo 'Email adresi gerekli <br />';
-		}else{
+		} else{
 			$email = $_POST['email'];
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				echo 'Email adresi uygun değil.';
 			}
+		}
 		// check title
 		if(empty($_POST['title'])){
 			echo 'Ürün Adı Gerekli <br />';
@@ -18,11 +20,10 @@
 				echo 'Ürün adında boşluk ve harfler dışında birşey kullanamazsınız.';
 			}
 		}
-
 		// check ingredients
 		if(empty($_POST['ingredients'])){
 			echo 'En az 1 adet açıklayıcı bilgi gerekli <br />';
-		}else{
+		} else{
 			$ingredients = $_POST['ingredients'];
 			if(!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/', $ingredients)){
 				echo 'Ürün özelliklerini aralara ","(virgül) koyarak ayırınız.';
@@ -30,6 +31,7 @@
 		}
 	} // end POST check
 ?>
+
 
 <!DOCTYPE html>
 <html>
